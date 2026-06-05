@@ -1,1 +1,74 @@
-work in progressssss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me Button</title>
+    <style>
+        /* Sets the background to black and centers all content on the screen */
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styles the "Click me" text */
+       .prompt-text {
+            color: white;
+            /* Tries local Papyrus first; falls back to the imported web font if missing */
+            font-family: 'Papyrus', 'Comic Sans MS', 'Paprika', serif;
+            font-size: 3.5rem; 
+            margin-bottom: 20px;
+            user-select: none;
+            letter-spacing: 2px;
+        }
+
+        /* Styles the image button to remove default borders and add a hover effect */
+        .image-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.1s ease;
+        }
+
+        /* Makes the image inside the button a standard size */
+        .image-button img {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="prompt-text">Click me</div>
+
+    <audio id="click-sound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
+
+    <button class="image-button" onclick="playSound()">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.myinstants.com%2Fmedia%2Finstants_images%2Fmaltigi.png&f=1&nofb=1&ipt=3a769779d3b42db5827211862d22369d0a46c0f133c0b42ec48c5e89f388c0c3" alt="Clickable Button Image">
+    </button>
+
+    <script>
+        // Function to play the audio file when the button is clicked
+        function playSound() {
+            const sound = document.getElementById('click-sound');
+            
+            // Resets the sound to the start in case it is clicked rapidly
+            sound.currentTime = 0; 
+            
+            // Plays the audio
+            sound.play().catch(error => {
+                console.log("Audio playback failed.", error);
+            });
+        }
+    </script>
+
+</body>
+</html>
